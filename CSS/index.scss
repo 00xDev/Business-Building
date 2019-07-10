@@ -1,0 +1,811 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i|Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap');
+//All COLORS/
+$colors: ( primary: #4682B3,
+accent: #90EE90,
+hoverheaderlinks: #90EE90,
+footerlinks: #717171,
+hoverfooterlinks: #1e1e1e,
+paragraphs: #1e1e1e);
+//ALL PADDINGS/
+$paddings: ( ftlink: 1em,
+cardtop: 3.1em);
+//RESPONSIVENESS/
+$desktop: 1240px;
+$ipad: 768px;
+@function color($color-name) {
+    @return map-get($colors,
+    $color-name)
+}
+
+;
+@function padding($padding-size) {
+    @return map-get($paddings,
+    $padding-size)
+}
+
+;
+@mixin desktop {
+    @media (min-width: #{$desktop}) {
+        @content;
+    }
+}
+
+@mixin ipad {
+    @media (min-width: #{$ipad}) {
+        @content;
+    }
+}
+
+* {
+    text-decoration: none;
+    list-style-type: none;
+}
+
+html,
+body {
+    margin: 0;
+}
+
+body {
+    font-family: 'montserrat', 'san-serif';
+    height: 100%;
+    div#bgclip {
+        clip-path: polygon(100% 0, 100% 20%, 45% 100%, 0 76%, 0 0);
+        width: 100%;
+        height: 516px;
+        background: color(primary);
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        z-index: -100;
+        opacity: 0.2;
+        @include ipad {
+            clip-path: polygon(100% 0, 100% 25%, 25% 100%, 0 76%, 0 0);
+            height: 709px;
+        }
+        @include desktop {
+            clip-path: polygon(100% 0, 100% 9%, 19% 65%, 0 50%, 0 0);
+            height: 904px;
+        }
+    }
+    header {
+        height: 70px;
+        width: calc(100% - 15px);
+        background-color: color(primary);
+        position: fixed;
+        left: 0px;
+        right: 0px;
+        top: 0px;
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: padding(ftlink);
+        padding-right: padding(ftlink);
+        ul.header-links {
+            display: none;
+        }
+        h2 {
+            color: color(accent);
+            font-style: normal;
+            font-weight: bold;
+            font-size: 1em;
+            line-height: 20px;
+        }
+        img {
+            width: 40px;
+            height: 50px;
+            color: #fff;
+            margin-right: 15px;
+        }
+        img:hover {
+            background: color(accent);
+            border-radius: 2px;
+            opacity: 0.8;
+        }
+        @include ipad {
+            h2 {
+                margin-left: 50px;
+            }
+            ul.header-links {
+                display: block;
+                display: flex;
+                margin-right: 50px;
+                li {
+                    padding: 15px 15px;
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 14px;
+                    line-height: 17px;
+                    display: flex;
+                    align-items: center;
+                    a {
+                        color: #fff;
+                    }
+                }
+                li a:hover {
+                    color: color(accent);
+                    font-weight: 300;
+                }
+                li:nth-last-child(1) {
+                    border: 1px dashed #FFFFFF;
+                    box-sizing: border-box;
+                    border-radius: 5px;
+                    display: flex;
+                    align-items: center;
+                }
+                li:nth-last-child(1):hover {
+                    border: 1px solid color(accent);
+                }
+            }
+            img {
+                display: none;
+            }
+        }
+        @include desktop {
+            h2 {
+                margin-left: 100px;
+                font-size: 18px;
+                line-height: 22px;
+            }
+            ul.header-links {
+                margin-right: 100px;
+                li {
+                    padding: 15px 30px;
+                }
+            }
+        }
+    }
+    img.heroimg {
+        position: absolute;
+        width: 294px;
+        height: 278px;
+        left: 81px;
+        top: 70px;
+        border: 2px solid #FFFFFF;
+        box-sizing: border-box;
+        @include ipad {
+            width: 328px;
+            height: 366px;
+            left: 437px;
+            top: 313px;
+        }
+        @include desktop {
+            width: 580px;
+            height: 563px;
+            left: 870px;
+            top: 162px;
+            border: none;
+        }
+    }
+    div#poi-bg {
+        display: none;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        position: absolute;
+        width: 100%;
+        height: 4150px;
+        background: color(accent);
+        left: 0px;
+        top: 920px;
+        opacity: 0.25;
+        @include ipad {
+            top: 900px;
+            height: 2450px;
+        }
+        @include desktop {
+            display: block;
+            height: 200px;
+            top: 1000px;
+        }
+    }
+    div.wrapper {
+        width: 345px;
+        height: 3000px;
+        margin: 0 auto;
+        @include ipad {
+            width: 668px;
+            height: 2822px;
+        }
+        @include desktop {
+            width: 1240px;
+            height: 2698px;
+            ;
+        }
+        section.hero {
+            width: 100%;
+            height: 460px;
+            margin-top: 390px;
+            @include ipad {
+                height: 561px;
+                margin-top: 150px;
+            }
+            @include desktop {
+                height: 641.21px;
+            }
+            div.card-hero {
+                @include ipad {
+                    width: 52%;
+                }
+                @include desktop {
+                    width: 53%;
+                }
+                h1,
+                h2 {
+                    font-style: normal;
+                    font-weight: bold;
+                    color: #1E1E1E;
+                    margin: 0px;
+                    text-transform: uppercase;
+                    @include ipad {
+                        color: color(primary);
+                    }
+                }
+                h1 {
+                    font-size: 30px;
+                    line-height: 45px;
+                    /* or 150% */
+                    @include ipad {
+                        font-size: 35px;
+                    }
+                    @include desktop {
+                        font-size: 70px;
+                        line-height: 70px;
+                    }
+                }
+                h2 {
+                    font-size: 22px;
+                    margin-top: 15px;
+                    margin-bottom: 25px;
+                    @include ipad {
+                        font-size: 30px;
+                    }
+                    @include desktop {
+                        font-size: 60px;
+                        line-height: 70px;
+                    }
+                }
+                p {
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 14px;
+                    line-height: 150.1%;
+                    /* or 21px */
+                    text-align: justify;
+                    color: color(paragraphs);
+                    @include ipad {
+                        font-size: 15px;
+                    }
+                    @include desktop {
+                        font-size: 20px;
+                    }
+                }
+                a.cta-btn {
+                    width: 100%;
+                    height: 70px;
+                    background: #FFFFFF;
+                    border: .125em solid #4682B3;
+                    box-sizing: border-box;
+                    border-radius: .258em;
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 18px;
+                    line-height: 22px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: #4682B3;
+                    margin-top: 30px;
+                    background: url(../images/send.svg);
+                    background-repeat: no-repeat;
+                    background-position-x: 90px;
+                    background-position-y: center;
+                    background-size: 22px 22px;
+                    padding-left: 30px;
+                    cursor: pointer;
+                    @include ipad {
+                        margin-top: 100px;
+                    }
+                    @include desktop {
+                        width: 70%;
+                        height: 100px;
+                        font-size: 25px;
+                        line-height: 30px;
+                        margin-top: 60px;
+                    }
+                }
+                a.cta-btn:hover {
+                    color: #fff;
+                    border: none;
+                    background: color(accent);
+                }
+            }
+        }
+        section.poi {
+            width: 100%;
+            height: 3500px;
+            margin-top: 100px;
+            @include ipad {
+                height: 2165px;
+                margin-top: 220px;
+            }
+            @include desktop {
+                height: 2000px;
+            }
+            div.offeringtag {
+                display: flex;
+                flex-flow: row;
+                justify-content: center;
+                p {
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 18px;
+                    text-transform: uppercase;
+                    line-height: 150.1%;
+                    padding-left: 16px;
+                    color: color(primary);
+                    @include ipad {
+                        font-size: 19px;
+                    }
+                }
+            }
+            div.quote {
+                width: 100%;
+                height: 106px;
+                display: flex;
+                flex-flow: column;
+                @include ipad {
+                    width: 80%;
+                    margin: 0 auto;
+                }
+                p {
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 14px;
+                    line-height: 150.1%;
+                    text-align: justify;
+                    color: color(paragraphs);
+                    @include ipad {
+                        font-size: 18px;
+                    }
+                }
+                strong {
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 14px;
+                    line-height: 150.1%;
+                    color: color(paragraphs);
+                    align-self: flex-end;
+                    @include ipad {
+                        font-size: 19px;
+                    }
+                }
+            }
+            div.card-business-offerings {
+                width: 100%;
+                height: 1950px;
+                margin-top: 100px;
+                @include ipad {
+                    height: 1100px;
+                }
+                @include desktop {
+                    height: 500px;
+                    margin-top: 200px;
+                    display: flex;
+                    flex-flow: row;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+                div.business-financing,
+                div.business-management,
+                div.business-consultation {
+                    width: 100%;
+                    height: 600px;
+                    border: 0.0625em solid #ddd;
+                    box-sizing: border-box;
+                    border-radius: .258em;
+                    margin: 3.1em 0em;
+                    @include ipad {
+                        height: 300px;
+                        display: flex;
+                        flex-flow: row;
+                        box-shadow: 2px 4px 15px rgba(70, 130, 179, 0.25), 0px 4px 4px rgba(70, 130, 179, 0.125), -2px -4px 15px rgba(70, 130, 179, 0.25), 0px -4px 4px rgba(70, 130, 179, 0.125);
+                    }
+                    @include desktop {
+                        flex-flow: column;
+                        height: 480px;
+                        width: 355px;
+                    }
+                    div.content {
+                        @include ipad {
+                            align-self: center;
+                        }
+                    }
+                    img {
+                        width: 100%;
+                        height: 60%;
+                        margin-bottom: 0;
+                        @include ipad {
+                            width: 40%;
+                            height: 100%;
+                            margin: 1em;
+                            align-self: center;
+                        }
+                        @include desktop {
+                            width: 80%;
+                            height: 50%;
+                            margin: 0 auto;
+                        }
+                    }
+                    h3 {
+                        margin: 0em 0.6075em;
+                        font-style: normal;
+                        font-weight: bold;
+                        font-size: 1.125em;
+                        line-height: 30px;
+                        color: color(paragraphs);
+                        @include ipad {
+                            font-size: 1.25em;
+                        }
+                        @include desktop {
+                            font-size: 1.125em;
+                            margin: 0em 0.8em;
+                        }
+                    }
+                    p {
+                        margin: .55em 0.6075em;
+                        font-family: Montserrat;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 14px;
+                        line-height: 22px;
+                        /* or 157% */
+                        text-align: justify;
+                        color: color(paragraphs);
+                        @include ipad {
+                            font-size: 1em;
+                        }
+                        @include desktop {
+                            font-size: 14px;
+                            margin: .55em 0.83em;
+                        }
+                    }
+                }
+                div.business-financing:hover,
+                div.business-management:hover,
+                div.business-consultation:hover {
+                    @include ipad {
+                        transform: scale(1.01);
+                        box-shadow: 3px 5px 18px rgba(70, 130, 179, 0.25), 0px 5px 8px rgba(70, 130, 179, 0.125), -3px -5px 18px rgba(70, 130, 179, 0.25), 0px -5px 8px rgba(70, 130, 179, 0.125);
+                    }
+                    @include desktop {
+                        box-shadow: 3px 5px 25px rgba(70, 130, 179, 0.20), 0px 5px 16px rgba(70, 130, 179, 0.20), -3px -5px 25px rgba(70, 130, 179, 0.20), 0px -5px 16px rgba(70, 130, 179, 0.20);
+                    }
+                }
+            }
+            h4 {
+                font-style: normal;
+                font-weight: 600;
+                font-size: 18px;
+                line-height: 150.1%;
+                /* or 27px */
+                text-transform: uppercase;
+                display: flex;
+                align-items: center;
+                text-align: center;
+                color: #4682B3;
+                margin-top: 100px;
+                @include ipad {
+                    justify-content: center;
+                }
+                @include desktop {
+                    margin-top: 250px;
+                    font-size: 25px;
+                }
+            }
+            div.bannerslides {
+                width: 100%;
+                height: 1300px;
+                margin-top: 50px;
+                box-sizing: border-box;
+                img.chevicon {
+                    display: none;
+                    @include ipad {
+                        display: block;
+                        width: 30px;
+                        height: 30px;
+                        position: absolute;
+                        top: 50%;
+                        z-index: 5000;
+                        transition: 0.6s ease;
+                        cursor: pointer;
+                        user-select: none;
+                    }
+                    @include desktop {
+                        width: 40px;
+                        height: 40px;
+                    }
+                }
+                img.chevicon:hover {
+                    @include ipad {
+                        background: rgb(241, 235, 235);
+                        opacity: 0.55;
+                        border-radius: 50%;
+                    }
+                }
+                img#previous {
+                    @include ipad {
+                        left: 10px;
+                    }
+                    @include desktop {
+                        left: 20px;
+                    }
+                }
+                img#next {
+                    @include ipad {
+                        left: 630px;
+                    }
+                    @include desktop {
+                        left: 983px;
+                    }
+                }
+                @include ipad {
+                    margin-top: auto;
+                    height: 350px;
+                    position: relative;
+                    overflow: hidden;
+                }
+                @include desktop {
+                    height: 550px;
+                    width: 1045px;
+                    margin: 0 auto;
+                }
+                .fade {
+                    @include ipad {
+                        animation-name: fade;
+                        animation-duration: 1.5s;
+                        @keyframes fade {
+                            from {
+                                opacity: .4
+                            }
+                            to {
+                                opacity: 1
+                            }
+                        }
+                    }
+                }
+                div {
+                    width: 100%;
+                    height: 200px;
+                    display: flex;
+                    margin-top: 50px;
+                    @include ipad {
+                        height: 100%;
+                        position: absolute;
+                        top: 0px;
+                        transition: all linear 400ms;
+                    }
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        border-radius: .258em;
+                        @include desktop {
+                            border-radius: .3em;
+                        }
+                    }
+                    p {
+                        width: 60%;
+                        position: absolute;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 12px;
+                        line-height: 1.5em;
+                        text-align: justify;
+                        align-self: flex-end;
+                        padding-bottom: 30px;
+                        padding-left: 15px;
+                        color: #fff;
+                        @include ipad {
+                            align-self: flex-start;
+                            width: 60%;
+                            font-weight: 500;
+                            font-size: 13px;
+                            padding-top: 230px;
+                            padding-left: 134px;
+                            text-align: center;
+                        }
+                        @include desktop {
+                            width: 70%;
+                            font-size: 14px;
+                            padding-top: 430px;
+                            padding-left: 156.75px;
+                        }
+                    }
+                }
+            }
+        }
+        div.circles {
+            @include ipad {
+                text-align: center;
+                span.dot {
+                    cursor: pointer;
+                    height: 10px;
+                    width: 10px;
+                    margin: 0 2px;
+                    background-color: #bbb;
+                    border-radius: 50%;
+                    display: inline-block;
+                    transition: background-color 0.6s ease;
+                }
+                .active,
+                span.dot:hover {
+                    background-color: color(primary);
+                }
+            }
+            @include desktop {
+                span.dot {
+                    height: 15px;
+                    width: 15px;
+                }
+            }
+        }
+        div.footerline {
+            width: 200px;
+            height: 10px;
+            border-bottom: 2px solid color(accent);
+            margin-top: 250px;
+            margin-left: 89.5px;
+            @include ipad {
+                width: 400px;
+                margin-top: 0px;
+                margin-left: 135px;
+            }
+            @include desktop {
+                width: 750px;
+                margin: 0 auto;
+            }
+        }
+    }
+    footer {
+        width: 100%;
+        height: 400px;
+        margin-top: 1450px;
+        margin-left: 0;
+        @include ipad {
+            margin-top: 120px;
+            height: 300px;
+        }
+        @include desktop {
+            height: 336px;
+            margin-top: 170px;
+        }
+        img.bg-shape {
+            display: none;
+            @include desktop {
+                display: block;
+                position: absolute;
+                top: 3080px;
+                left: 150.5px;
+            }
+        }
+        div.footercard {
+            width: 100%;
+            height: 300px;
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+            @include ipad {
+                height: 300px;
+                margin: 0px;
+                flex-flow: row;
+                justify-content: space-evenly;
+            }
+            @include desktop {
+                height: 250px;
+                width: 650px;
+                margin: 0 auto;
+            }
+            ul.footer-links {
+                margin-top: 50px;
+                margin-right: 0px;
+                margin-left: 0px;
+                z-index: 100;
+                h4 {
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 1.3em;
+                    line-height: 20px;
+                    /* identical to box height */
+                    text-transform: uppercase;
+                    text-align: center;
+                    color: color(primary);
+                    @include ipad {
+                        font-size: 1.35em;
+                        text-align: left;
+                    }
+                }
+                li {
+                    padding-top: padding(ftlink);
+                    text-transform: uppercase;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 13px;
+                    line-height: 16px;
+                    text-align: center;
+                    @include ipad {
+                        font-size: 14px;
+                        text-align: left;
+                    }
+                    a {
+                        color: color(footerlinks);
+                    }
+                    a:hover {
+                        color: color(hoverfooterlinks);
+                        font-size: 14px;
+                        @include ipad {
+                            font-size: 14.2px;
+                        }
+                    }
+                }
+                div.social-media-section {
+                    display: flex;
+                    flex-flow: row;
+                    justify-content: space-evenly;
+                    align-content: center;
+                    div.social-media-icons {
+                        display: flex;
+                        flex-flow: column;
+                        img {
+                            padding-bottom: 15px;
+                            cursor: pointer;
+                        }
+                        img:hover {
+                            transform: scale(1.2);
+                            opacity: 0.9;
+                        }
+                    }
+                    div.footerlogotext {
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 14px;
+                        line-height: 17px;
+                        color: color(accent);
+                        margin-top: 21px;
+                    }
+                }
+            }
+            ul#social-media {
+                @include ipad {
+                    padding-top: 30px;
+                }
+            }
+        }
+        div.footercopyrightbg {
+            width: 100%;
+            height: 40px;
+            background: #20B2AA;
+            margin-top: 200px;
+            display: flex;
+            flex-flow: column;
+            justify-content: space-around;
+            align-items: center;
+            @include desktop {
+                height: 50px;
+                margin-top: 100px;
+            }
+            p {
+                font-style: normal;
+                font-weight: 500;
+                font-size: 10px;
+                line-height: 150.1%;
+                /* or 15px */
+                text-align: justify;
+                color: #FFFFFF;
+                margin: 0px;
+            }
+            p.coder {
+                font-size: 8px;
+            }
+        }
+    }
+}
